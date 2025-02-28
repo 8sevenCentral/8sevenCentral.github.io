@@ -51,7 +51,7 @@ jekyll-98:
   # see assets/icons for icon choices
   site_links:
   - title: Digital Garden
-    url: dg.8sevenC.xyz
+    url: http://dg.8sevenC.xyz
     target: _blank            # optional
     icon: html                # optional
     alt: 'This is my Digital Garden' # alt text is shown in start menu - long strings won't wrap and might break menu
