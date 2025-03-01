@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-02-25T16:29:47-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.  It will also appear on the site About page. 
+</subtitle><author><name>GitHub User</name><email>your-email@domain.com</email></author><entry><title type="html">Jekyll 98 Example</title><link href="http://localhost:4000/posts/2023/08/11/jekyll-98-example.html" rel="alternate" type="text/html" title="Jekyll 98 Example" /><published>2023-08-11T00:00:00-04:00</published><updated>2023-08-11T00:00:00-04:00</updated><id>http://localhost:4000/posts/2023/08/11/jekyll-98-example</id><content type="html" xml:base="http://localhost:4000/posts/2023/08/11/jekyll-98-example.html"><![CDATA[<h1 id="jekyll-98">jekyll-98</h1>
+
+<p><a href="https://queenkjuul.github.io/jekyll-98/"><strong><em>See it in action right here!</em></strong></a></p>
+
+<p>A theme for Jekyll built using the <a href="https://github.com/botoxparty/XP.css">XP.css</a> fork of <a href="https://github.com/jdan/98.css">98.css</a> which aims to recreate the aesthetics of Windows 98 in a mobile-friendly, customizable blog format.</p>
+
+<p><em>Almost</em> no JavaScript, but should be perfectly usable without. Ships with pagination, atom feed generation, automatic social media links, and per-category index pages out of the box.</p>
+
+<p><img src="https://raw.githubusercontent.com/queenkjuul/jekyll-98/main/assets/screenshot.png" alt="screenshot of jekyll-98" /></p>
+
+<h2 id="installation">Installation</h2>
+
+<h3 id="quick-start">Quick Start</h3>
+
+<p>This repo is actually a fully functional jekyll site! You can clone or fork this repo, update the config with your own values, add some posts, et voila! You have a website ready to be hosted with Github Pages or built and served on your own host.</p>
+
+<p>If you use this repo as a base, make sure your GitHub Repo &gt; Settings &gt; Pages &gt; Source is set to “GitHub Actions.” The <code class="language-plaintext highlighter-rouge">main</code> branch is deployed by default. Edit <code class="language-plaintext highlighter-rouge">.github/workflows/jekyll.yml</code> to change branches. <a href="#github-pages--jekyll-remote-theme">See note below about GitHub Actions</a></p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/queenkjuul/jekyll-98
+<span class="nb">cd </span>jekyll-98
+bundle
+bundle <span class="nb">exec </span>jekyll serve  <span class="c"># preview</span>
+bundle <span class="nb">exec </span>jekyll build  <span class="c"># build</span>
+</code></pre></div></div>
+
+<h3 id="github-pages--jekyll-remote-theme">GitHub Pages / jekyll-remote-theme</h3>
+
+<p>In your site’s _config.yml, add:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">remote_theme</span><span class="pi">:</span> <span class="s">queenkjuul/jekyll-98</span>
+</code></pre></div></div>
+
+<p>You will need a <code class="language-plaintext highlighter-rouge">_config.yml</code> file in the root of your deployment branch as well. All it needs to contain is:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">defaults</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span> <span class="c1"># an empty string here means all files in the project</span>
+    <span class="na">values</span><span class="pi">:</span>
+      <span class="na">layout</span><span class="pi">:</span> <span class="s2">"</span><span class="s">post"</span>
+</code></pre></div></div>
+
+<p>Without this, your README.md file will not use any particular layout, and will just render plain text onto an empty desktop. For a more complete example, see <a href="https://github.com/queenkjuul/spotify97/blob/main/_config.yml">here</a></p>
+
+<p>If you are not adding your own social media links to <code class="language-plaintext highlighter-rouge">_config.yml</code> then you will also need to add this:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">jekyll-98</span><span class="pi">:</span>
+  <span class="na">social_links</span><span class="pi">:</span>
+    <span class="na">github</span><span class="pi">:</span> <span class="no">false</span>
+    <span class="na">youtube</span><span class="pi">:</span> <span class="no">false</span>
+    <span class="na">twitch</span><span class="pi">:</span> <span class="no">false</span>
+</code></pre></div></div>
+
+<p>Otherwise, my own socials will appear on your site :cringe: (if anyone knows a better way to override these by default let me know)</p>
+
+<h4 id="github-pages-deployment">GitHub Pages Deployment</h4>
+
+<p><strong>NOTE:</strong> the “deploy from branch (classic)” GitHub Pages deployment method FAILS to generate category index pages. However, the default Jekyll GitHub Action works. <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow">See instructions from GitHub here and set up your site’s repo to publish with the default Jekyll workflow</a>.</p>
+
+<p>Using the legacy “deploy from branch” option will not break the site, but it will break the <a href="#theme-settings"><code class="language-plaintext highlighter-rouge">desktop_categories</code></a> and <a href="#settings"><code class="language-plaintext highlighter-rouge">show_categories</code></a> functions. If they are left enabled, the site will build and deploy, but those links will lead to 404s, so it’s best to disable them.</p>
+
+<h3 id="manual-installation">Manual installation</h3>
+
+<p><code class="language-plaintext highlighter-rouge">jekyll-98</code> is now available as a standard <code class="language-plaintext highlighter-rouge">gem</code> theme. You can install it to your site with <code class="language-plaintext highlighter-rouge">bundle add jekyll-98</code> and add this line to your Jekyll site’s <code class="language-plaintext highlighter-rouge">_config.yml</code>:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">theme</span><span class="pi">:</span> <span class="s">jekyll-98</span>
+</code></pre></div></div>
+
+<h2 id="usage">Usage</h2>
+
+<p>Theme should provide sane defaults, but there’s lots to customize. For full configuration options, refer to <a href="https://github.com/queenkjuul/jekyll-98/blob/main/_config.yml">_config.yml</a>. Add whatever settings you want <em>to your site’s _config.yml</em>.</p>
+
+<h3 id="posts">Posts</h3>
+
+<h4 id="titles-and-excerpts">Titles and excerpts</h4>
+
+<p>The default Post layout includes a header containing the post title as defined in the front matter. This means that if the first line of your post is a header containing the title, the title will appear twice. Keep this in mind. Also, Jekyll will by default use the first block of your post as its excerpt, so it’s best to avoid first-line headers. You can always define an excerpt explicitly in the front matter like so:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Post Title</span>
+<span class="na">excerpt</span><span class="pi">:</span> <span class="s">this is what will show on the home page (if show_excerpts is enabled)</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<h4 id="list-formatting">List formatting</h4>
+
+<p>If you add <code class="language-plaintext highlighter-rouge">{:.tree-view}</code> before your bulleted lists, they will render in Windows Explorer-style tree view mode. I’d like to do this automatically, but I don’t know how to apply a class automatically to the kramdown/jekyll output. If you know how, get in touch! Open an issue, raise a PR, or (please don’t really) email me.</p>
+
+<p>Example:</p>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{:.tree-view}
+<span class="p"> -</span> First Item
+<span class="p">    -</span> Second Item
+<span class="p"> -</span> Third Item
+</code></pre></div></div>
+
+<ul class="tree-view">
+  <li>First Item
+    <ul>
+      <li>Second Item</li>
+    </ul>
+  </li>
+  <li>Third Item</li>
+</ul>
+
+<h4 id="front-matter">Front matter</h4>
+
+<p>You will want to define the following in your posts’ front matter:</p>
+
+<ul>
+  <li>Required:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">title: string</code> - as mentioned above, will be displayed as a top-level header in the post page layout, as well as in lists</li>
+      <li><code class="language-plaintext highlighter-rouge">layout: post</code> - you probably want to leave this</li>
+      <li><code class="language-plaintext highlighter-rouge">date: YYYY-MM-DD HH:MM:SS +/-0000</code> - time zone offset at end. Only for internal use, actual formatted date shown to users is formatted per <code class="language-plaintext highlighter-rouge">jekyll-98.date_format</code> in <code class="language-plaintext highlighter-rouge">_config.yml</code></li>
+    </ul>
+  </li>
+  <li>Optional
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">categories: string1 string2 ...</code> - space-separated list of post categories. Posts can be browsed by category with links on the homepage. Uses <a href="https://github.com/field-theory/jekyll-category-pages">jekyll-category-pages</a>.</li>
+      <li><code class="language-plaintext highlighter-rouge">icon: icon_string</code> - <code class="language-plaintext highlighter-rouge">icon_string</code> is the filename of any icon in the jekyll-98 <code class="language-plaintext highlighter-rouge">assets/icons</code> folder, minus the extension (so omit <code class="language-plaintext highlighter-rouge">.png</code>). Optional. Unfortunately for now, can’t be automatically set by category. Will appear in any post list.</li>
+      <li><code class="language-plaintext highlighter-rouge">excerpt: string</code> - excerpt to be shown in post lists if excerpts is enabled in <code class="language-plaintext highlighter-rouge">_config.yml</code>. If not defined, jekyll will use the first paragraph of your post.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="configuration">Configuration</h2>
+
+<h3 id="basic-site-info">Basic site info</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">title</span><span class="pi">:</span> <span class="s">blog name</span>
+<span class="na">author</span><span class="pi">:</span>     <span class="c1"># ***PUBLIC BY DEFAULT!***</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="nl">&amp;name</span> <span class="s">your name</span>           <span class="c1"># need &amp;name prefix for Contact page to work</span>
+    <span class="na">email</span><span class="pi">:</span> <span class="nl">&amp;email</span> <span class="s">your@email.com</span>    <span class="c1"># need &amp;email prefix for Contact page</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">what's the deal with websites?</span>
+</code></pre></div></div>
+
+<p>Basic Jekyll/Pages info from the template, such as title, author, and description. Author is a parent node, with child nodes name and email. Site title is used everywhere. Description appears on Home and About pages. Author info only shows up (optionally) on the Contact page. <code class="language-plaintext highlighter-rouge">title</code>, <code class="language-plaintext highlighter-rouge">author</code>, and <code class="language-plaintext highlighter-rouge">description</code> should be defined at the root level of your <code class="language-plaintext highlighter-rouge">_config.yml</code></p>
+
+<h3 id="settings">Settings</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">show_excerpts</span><span class="pi">:</span>  <span class="no">false</span>       <span class="c1"># show post excerpts in post lists</span>
+<span class="na">show_categories</span><span class="pi">:</span>  <span class="no">true</span>     <span class="c1"># show category links in post lists - REQUIRES GITHUB ACTIONS TO WORK WITH GITHUB PAGES, SEE README</span>
+<span class="na">paginate</span><span class="pi">:</span>       <span class="m">3</span>           <span class="c1"># set to false to disable, numbers above 3 might be weird on mobile</span>
+<span class="na">paginate_path</span><span class="pi">:</span>  <span class="s">/page/:num</span>  <span class="c1"># change if you know what you're doing</span>
+<span class="na">google_analytics</span><span class="pi">:</span> <span class="s">asdf1234</span>  <span class="c1"># your google analytics key</span>
+</code></pre></div></div>
+
+<p>Enabling excerpts will show the first bit of a post on the home page. This can be a little unreliable with the layout of the posts list, so either disable (default) or experiment. You can define an explicit excerpt (instead of letting Jekyll guess) by defining <code class="language-plaintext highlighter-rouge">excerpt</code> in the post’s front matter (see <a href="#posts">Posts</a>)</p>
+
+<p><code class="language-plaintext highlighter-rouge">show_categories</code> is NOT compatible with the default “deploy from a branch” GitHub Pages deployment method. Instead, <a href="#github-pages-deployment">use a GitHub Action</a></p>
+
+<h3 id="theme-settings">Theme settings</h3>
+
+<p>Theme settings are defined within the <code class="language-plaintext highlighter-rouge">jekyll-98</code> node of your _config.yml</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">title</span><span class="pi">:</span> <span class="s">...</span>
+<span class="na">author</span><span class="pi">:</span> <span class="s">...</span>
+<span class="nn">...</span>
+<span class="na">jekyll-98</span><span class="pi">:</span>
+    <span class="na">date_format</span><span class="pi">:</span> <span class="s">...</span>
+    <span class="s">...</span>
+</code></pre></div></div>
+
+<h4 id="date_format"><code class="language-plaintext highlighter-rouge">date_format</code></h4>
+
+<p>change how timestamps are shown - refer to <a href="https://shopify.github.io/liquid/filters/date/">https://shopify.github.io/liquid/filters/date/</a> if you want to customize this</p>
+
+<h4 id="icon"><code class="language-plaintext highlighter-rouge">icon</code></h4>
+
+<p>you can define a different icon to use for the “my computer” homepage icon on the desktop here.</p>
+
+<h4 id="desktop_categories"><code class="language-plaintext highlighter-rouge">desktop_categories</code></h4>
+
+<p>Categories defined in this array will generate desktop icons and start menu links, assuming there are posts that exist that are tagged with that category. Note that things might get weird layout wise if you have more than 5-7 desktop icons total (<code class="language-plaintext highlighter-rouge">desktop_categories</code> and <code class="language-plaintext highlighter-rouge">site_links</code> combined)</p>
+
+<p>Not compatible with the default “Deploy from a branch” GitHub Pages deployment method. <a href="#github-pages-deployment">Use the default Jekyll deployment Action instead</a></p>
+
+<h4 id="site_links"><code class="language-plaintext highlighter-rouge">site_links</code></h4>
+
+<p>You can define additional links to include on the desktop and start menu. Links must have a title, url, icon, and alt text/description. the <code class="language-plaintext highlighter-rouge">alt</code> text is both the alt-text for the actual icon image tag (for screen readers) but also appears in the start menu. The start menu does not wrap text, so long descriptions might stretch the menu out to goofy proportions.</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">jekyll-98</span><span class="pi">:</span>
+    <span class="na">site_links</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Name'</span>
+          <span class="na">url</span><span class="pi">:</span> <span class="s">https://example.com</span>
+          <span class="na">icon</span><span class="pi">:</span> <span class="s">document</span>    <span class="c1"># see assets/icons</span>
+          <span class="na">alt</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Descriptive</span><span class="nv"> </span><span class="s">text'</span>
+</code></pre></div></div>
+
+<h4 id="social_links"><code class="language-plaintext highlighter-rouge">social_links</code></h4>
+
+<p>All available sites/icons are listed in the theme <a href="https://github.com/queenkjuul/jekyll-98/blob/main/_config.yml"><code class="language-plaintext highlighter-rouge">_config.yml</code></a>. Define a username, and the site will appear in the taskbar, as well as the Contact page (if enabled)</p>
+
+<h4 id="contact"><code class="language-plaintext highlighter-rouge">contact</code></h4>
+
+<p>By default, the contact page will display the name and email set in the site config. Commenting/removing these lines will prevent the Contact page from being generated (and links to it will be removed)</p>
+
+<p>See <a href="https://github.com/queenkjuul/jekyll-98/blob/main/_config.yml"><code class="language-plaintext highlighter-rouge">_config.yml</code></a> for details on setting up additional info beyond name + email.</p>
+
+<h4 id="about"><code class="language-plaintext highlighter-rouge">about</code></h4>
+
+<p>You can add any info you like to the default About page. The About page will automatically include your site description. Additional lines defined in the <code class="language-plaintext highlighter-rouge">jekyll-98.about</code> array will appear in a bulleted list on the About page, below the description.</p>
+
+<h2 id="contributing">Contributing</h2>
+
+<p>Bug reports and pull requests are welcome on GitHub at https://github.com/queenkjuul/jekyll-98. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the <a href="http://contributor-covenant.org">Contributor Covenant</a> code of conduct.</p>
+
+<h2 id="development">Development</h2>
+
+<p>To set up your environment to develop this theme, run <code class="language-plaintext highlighter-rouge">bundle install</code>.</p>
+
+<p>Your theme is setup just like a normal Jekyll site! To test your theme, run <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> and open your browser at <code class="language-plaintext highlighter-rouge">http://localhost:4000</code>. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme’s contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.</p>
+
+<p>When your theme is released, only the files in <code class="language-plaintext highlighter-rouge">_layouts</code>, <code class="language-plaintext highlighter-rouge">_includes</code>, <code class="language-plaintext highlighter-rouge">_sass</code> and <code class="language-plaintext highlighter-rouge">assets</code> tracked with Git will be bundled.
+To add a custom directory to your theme-gem, please edit the regexp in <code class="language-plaintext highlighter-rouge">jekyll-98.gemspec</code> accordingly.</p>
+
+<h2 id="license">License</h2>
+
+<p>The theme is available as open source under the terms of the <a href="https://opensource.org/licenses/MIT">MIT License</a>.</p>
+
+<p>social icons from https://github.com/edent/SuperTinyIcons</p>
+
+<p>credit Alex Meub https://win98icons.alexmeub.com/</p>]]></content><author><name>GitHub User</name><email>your-email@domain.com</email></author><category term="posts" /><summary type="html"><![CDATA[jekyll-98]]></summary></entry></feed>
